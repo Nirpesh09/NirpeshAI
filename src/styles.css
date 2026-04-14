@@ -1,0 +1,250 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.theme-dark {
+  --bg: #0a0f1a;
+  --panel: #111827;
+  --panel-soft: #1f2937;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --accent: #5b8cff;
+  --bubble-me: #2d65f5;
+  --bubble-them: #1f2937;
+}
+
+.theme-light {
+  --bg: #edf1f7;
+  --panel: #ffffff;
+  --panel-soft: #f4f6fa;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #3366ff;
+  --bubble-me: #3366ff;
+  --bubble-them: #e9edf5;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #1c2a46, var(--bg));
+  color: var(--text);
+}
+
+.sidebar {
+  background: color-mix(in oklab, var(--panel) 92%, black 8%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+}
+
+.sidebar-header,
+.chat-header,
+.composer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sidebar h1 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--panel-soft);
+  color: var(--muted);
+}
+
+.search input,
+.composer input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  color: inherit;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.chat-list {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-item {
+  background: transparent;
+  border: 1px solid transparent;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 12px;
+  padding: 10px;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.chat-item.active {
+  background: var(--panel-soft);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--panel-soft);
+}
+
+.chat-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.chat-bottom {
+  color: var(--muted);
+  font-size: 0.84rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  font-size: 0.75rem;
+}
+
+.chat-panel {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-width: 0;
+}
+
+.chat-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: color-mix(in oklab, var(--panel) 90%, black 10%);
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.chat-header small {
+  color: var(--muted);
+}
+
+.chat-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.messages {
+  padding: 18px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bubble {
+  max-width: min(68ch, 76%);
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+.bubble p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.bubble span {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: color-mix(in oklab, var(--text) 65%, transparent);
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bubble.me {
+  align-self: flex-end;
+  background: var(--bubble-me);
+}
+
+.bubble.them {
+  align-self: flex-start;
+  background: var(--bubble-them);
+}
+
+.composer {
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: color-mix(in oklab, var(--panel) 92%, black 8%);
+}
+
+.icon-btn,
+.send-btn {
+  border: none;
+  border-radius: 10px;
+  background: var(--panel-soft);
+  color: inherit;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.send-btn {
+  background: var(--accent);
+}
+
+.send-btn.secondary {
+  background: var(--panel-soft);
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
